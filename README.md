@@ -6,7 +6,6 @@ It can retrieve the title, salary, description and requirements of the job
 - Beautiful soup
 - re
 - openpyxl
-- urllib2
 
 # Contributor
 ***Tijesunimi Peters***
