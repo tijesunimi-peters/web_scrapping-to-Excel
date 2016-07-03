@@ -1,9 +1,7 @@
-from openpyxl import *
-from bs4 import *
-from urllib2 import *
-from urllib import *
-from re import *
-from requests import *
+from openpyxl import load_workbook
+from bs4 import BeautifulSoup
+from re import escape
+from requests import get, codes
 
 wb = load_workbook(filename = "Mass Job Upload.xlsx")
 active = wb["Fields"]
@@ -59,7 +57,7 @@ for page in range(var["page"]["start"],var["page"]["limit"]):
       active.cell(column=col, row = 20, value="%s" % page_content.select('[itemprop="title"]')[0].getText())
       print page_content.select('[itemprop="title"]')[0].getText()
       active.cell(column=col, row = 7, value="%s" % page_content.select('[itemprop="baseSalary"]')[0].getText())
-      
+
       description = page_content.select('[itemprop="hiringOrganization"] > ul')
       if len(description) > 0:
         active.cell(column=col, row = 21).value = ""
